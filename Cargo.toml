@@ -1,11 +1,11 @@
 [package]
 name = "faf-syscall"
-version = "1.0.0"
+version = "1.0.1"
 edition = "2021"
 license = "Unlicense"
 description = "Raw (asm), fast system calls for linux with no dependencies (no_std)"
 keywords = ["syscall", "linux", "kernel", "embedded", "no-std"]
-categories = ["no-std", "linux", "embedded", "syscall", "kernel"]
+categories = ["no-std", "os::linux-apis", "embedded"]
 repository = "https://github.com/errantmind/faf-syscall"
 homepage = "https://github.com/errantmind/faf-syscall"
 readme = "README.md"
