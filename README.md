@@ -1,7 +1,9 @@
-#faf-syscall
+# faf-syscall
 
 syscall macro
-* Fast, minimalist, Linux, no_std
+* Fast, minimalist, dependency-free, Linux, `#![no_std]`
+
+This was originally developed for the [faf web server](https://github.com/errantmind/faf)
 
 __Usage__
 

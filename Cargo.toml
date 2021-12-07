@@ -1,8 +1,11 @@
 [package]
 name = "faf-syscall"
-version = "0.1.0"
+version = "1.0.0"
 edition = "2021"
-
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
-
-[dependencies]
+license = "Unlicense"
+description = "Raw (asm), fast system calls for linux with no dependencies (no_std)"
+keywords = ["syscall", "linux", "kernel", "embedded", "no-std"]
+categories = ["no-std", "linux", "embedded", "syscall", "kernel"]
+repository = "https://github.com/errantmind/faf-syscall"
+homepage = "https://github.com/errantmind/faf-syscall"
+readme = "README.md"
