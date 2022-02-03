@@ -1,7 +1,12 @@
 # faf-syscall
 
 syscall macro
-* Fast, minimalist, dependency-free, Linux, `#![no_std]`
+* Fast
+* Minimalist
+* Dependency-free
+* Linux
+* `#![no_std]`
+* Stable (not nightly)
 
 This was originally developed for the [faf web server](https://github.com/errantmind/faf)
 

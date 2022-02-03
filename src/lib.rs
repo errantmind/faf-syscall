@@ -1,6 +1,7 @@
 #![allow(clippy::missing_safety_doc)]
-#![feature(asm)]
 #![no_std]
+
+use core::arch::asm;
 
 #[macro_export(local_inner_macros)]
 macro_rules! sys_call {
