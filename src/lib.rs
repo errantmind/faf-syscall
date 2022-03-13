@@ -3,34 +3,35 @@
 
 use core::arch::asm;
 
-#[macro_export(local_inner_macros)]
+#[macro_export]
 macro_rules! sys_call {
     ($num:ident) => {
-        $crate::syscall::sys_call0($num)
+        $crate::sys_call0($num)
     };
     ($num:expr, $arg1:expr) => {
-        $crate::syscall::sys_call1($num, $arg1)
+        $crate::sys_call1($num, $arg1)
     };
     ($num:expr, $arg1:expr, $arg2:expr) => {
-        $crate::syscall::sys_call2($num, $arg1, $arg2)
+        $crate::sys_call2($num, $arg1, $arg2)
     };
     ($num:expr, $arg1:expr, $arg2:expr, $arg3:expr) => {
-        $crate::syscall::sys_call3($num, $arg1, $arg2, $arg3)
+        $crate::sys_call3($num, $arg1, $arg2, $arg3)
     };
     ($num:expr, $arg1:expr, $arg2:expr, $arg3:expr, $arg4:expr) => {
-        $crate::syscall::sys_call4($num, $arg1, $arg2, $arg3, $arg4)
+        $crate::sys_call4($num, $arg1, $arg2, $arg3, $arg4)
     };
     ($num:expr, $arg1:expr, $arg2:expr, $arg3:expr, $arg4:expr, $arg5:expr) => {
-        $crate::syscall::sys_call5($num, $arg1, $arg2, $arg3, $arg4, $arg5)
+        $crate::sys_call5($num, $arg1, $arg2, $arg3, $arg4, $arg5)
     };
     ($num:expr, $arg1:expr, $arg2:expr, $arg3:expr, $arg4:expr, $arg5:expr, $arg6:expr) => {
-        $crate::syscall::sys_call6($num, $arg1, $arg2, $arg3, $arg4, $arg5, $arg6)
+        $crate::sys_call6($num, $arg1, $arg2, $arg3, $arg4, $arg5, $arg6)
     };
 }
 
 #[inline(always)]
-pub unsafe fn sys_call0(mut num: isize) -> isize {
-    asm!(
+pub fn sys_call0(mut num: isize) -> isize {
+    unsafe {
+        asm!(
          "syscall",
          in("rax") num,
          out("rcx") _,
@@ -38,12 +39,14 @@ pub unsafe fn sys_call0(mut num: isize) -> isize {
          lateout("rax") num,
          options(nostack));
 
-    num
+        num
+    }
 }
 
 #[inline(always)]
-pub unsafe fn sys_call1(mut num: isize, arg1: isize) -> isize {
-    asm!(
+pub fn sys_call1(mut num: isize, arg1: isize) -> isize {
+    unsafe {
+        asm!(
          "syscall",
          in("rax") num,
          in("rdi") arg1,
@@ -51,12 +54,14 @@ pub unsafe fn sys_call1(mut num: isize, arg1: isize) -> isize {
          out("r11") _,
          lateout("rax") num,
          options(nostack));
-    num
+        num
+    }
 }
 
 #[inline(always)]
-pub unsafe fn sys_call2(mut num: isize, arg1: isize, arg2: isize) -> isize {
-    asm!(
+pub fn sys_call2(mut num: isize, arg1: isize, arg2: isize) -> isize {
+    unsafe {
+        asm!(
          "syscall",
          in("rax") num,
          in("rdi") arg1,
@@ -65,12 +70,14 @@ pub unsafe fn sys_call2(mut num: isize, arg1: isize, arg2: isize) -> isize {
          out("r11") _,
          lateout("rax") num,
          options(nostack));
-    num
+        num
+    }
 }
 
 #[inline(always)]
-pub unsafe fn sys_call3(mut num: isize, arg1: isize, arg2: isize, arg3: isize) -> isize {
-    asm!(
+pub fn sys_call3(mut num: isize, arg1: isize, arg2: isize, arg3: isize) -> isize {
+    unsafe {
+        asm!(
          "syscall",
          in("rax") num,
          in("rdi") arg1,
@@ -80,18 +87,14 @@ pub unsafe fn sys_call3(mut num: isize, arg1: isize, arg2: isize, arg3: isize) -
          out("r11") _,
          lateout("rax") num,
          options(nostack));
-    num
+        num
+    }
 }
 
 #[inline(always)]
-pub unsafe fn sys_call4(
-    mut num: isize,
-    arg1: isize,
-    arg2: isize,
-    arg3: isize,
-    arg4: isize,
-) -> isize {
-    asm!(
+pub fn sys_call4(mut num: isize, arg1: isize, arg2: isize, arg3: isize, arg4: isize) -> isize {
+    unsafe {
+        asm!(
          "syscall",
          in("rax") num,
          in("rdi") arg1,
@@ -102,11 +105,12 @@ pub unsafe fn sys_call4(
          out("r11") _,
          lateout("rax") num,
          options(nostack));
-    num
+        num
+    }
 }
 
 #[inline(always)]
-pub unsafe fn sys_call5(
+pub fn sys_call5(
     mut num: isize,
     arg1: isize,
     arg2: isize,
@@ -114,7 +118,8 @@ pub unsafe fn sys_call5(
     arg4: isize,
     arg5: isize,
 ) -> isize {
-    asm!(
+    unsafe {
+        asm!(
          "syscall",
          in("rax") num,
          in("rdi") arg1,
@@ -126,11 +131,12 @@ pub unsafe fn sys_call5(
          out("r11") _,
          lateout("rax") num,
          options(nostack));
-    num
+        num
+    }
 }
 
 #[inline(always)]
-pub unsafe fn sys_call6(
+pub fn sys_call6(
     mut num: isize,
     arg1: isize,
     arg2: isize,
@@ -139,7 +145,8 @@ pub unsafe fn sys_call6(
     arg5: isize,
     arg6: isize,
 ) -> isize {
-    asm!(
+    unsafe {
+        asm!(
          "syscall",
          in("rax") num,
          in("rdi") arg1,
@@ -152,5 +159,6 @@ pub unsafe fn sys_call6(
          out("r11") _,
          lateout("rax") num,
          options(nostack));
-    num
+        num
+    }
 }
