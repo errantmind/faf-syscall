@@ -12,4 +12,6 @@ This was originally developed for the [faf web server](https://github.com/errant
 
 __Usage__
 
-`sys_call!(SYS_NUM, arg1, arg2, ...)`
+let errno = `sys_call!(SYS_NUM, arg1, arg2, ...)`
+
+Returns result as a positive isize or errno as a negative isize.
