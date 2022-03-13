@@ -1,6 +1,6 @@
 [package]
 name = "faf-syscall"
-version = "3.0.0"
+version = "3.0.1"
 edition = "2021"
 license = "Unlicense"
 description = "Raw (asm), fast system calls for linux with no dependencies (no_std)"

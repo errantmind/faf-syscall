@@ -1,4 +1,3 @@
-#![allow(clippy::missing_safety_doc)]
 #![no_std]
 
 use core::arch::asm;
